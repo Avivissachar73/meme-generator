@@ -183,6 +183,7 @@ function doChangeCurrTxtIdx(idx) {
 // }
 
 function doMoveTxt(event) {
+    event.preventDepault();
     if (!getIsCanvasClick()) return;
     if (getCurrTxtIdx() === undefined) return
     getMeme().texts[getCurrTxtIdx()].pos = {x: event.offsetX, y: event.offsetY};
