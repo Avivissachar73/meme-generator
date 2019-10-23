@@ -72,7 +72,7 @@ function canvasClicked(event) {
     //     selectTxt(getCurrTxtIdx());
     //     return;
     // }
-    event.preventDepault();
+    // event.preventDepault();
     if (!onChangeCurrTxtIdx(event)) {
         console.log('wowowow');
         resetCurrTxtIdx();
