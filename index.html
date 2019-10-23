@@ -15,17 +15,17 @@
         <h1 class="title">Meme Generator</h1>
         <section class="header-btns flex align-center space-between wrap">
             <button onclick="onToggleGalleryModal()" class="open-gallery-modal">gallery</button>
+            <button onclick="onSaveMeme()" class="save-meme-btn">Save</button>
             <button onclick="onDownloadMeme()" class="download-meme-btn">
                 <a class="download-link" href="" download="my_meme.jpg">Download</a>
             </button>
-            <button onclick="onSaveMeme()" class="save-meme-btn">Save</button>
         </section>
     </header>
     
     <main class="main-container flex align-center">
         <section class="canvas-container">
-            <canvas class="meme-canvas" onclick="canvasClicked(event)" onmousemove="doMoveTxt(event)" onmousedown="onCancasClick()"
-            onmouseup="onCanvasUnClick()" onmouseout="onCanvasUnClick()"></canvas>
+            <canvas class="meme-canvas" onclick="canvasClicked(event)" ontouchmove="doMoveTxt(event)" onmousemove="doMoveTxt(event)"
+            onmousedown="onCancasClick()" ontouchsend="onCanvasUnClick()" onmouseup="onCanvasUnClick()" ontouchend="onCanvasUnClick()" onmouseout="onCanvasUnClick()"></canvas>
         </section>
 
         <section class="options-container flex justify-center space-around wrap">
