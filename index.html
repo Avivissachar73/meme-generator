@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Meme Generator</title>
+</head>
+<body onload="init()">
+    <div class="screen" onclick="onToggleGalleryModal()"></div>
+
+    <header class="flex align-center space-between">
+        <h1 class="title">Meme Generator</h1>
+        <section class="header-btns flex align-center space-between wrap">
+            <button onclick="onToggleGalleryModal()" class="open-gallery-modal">gallery</button>
+            <button onclick="onDownloadMeme()" class="download-meme-btn">
+                <a class="download-link" href="" download="my_meme.jpg">Download</a>
+            </button>
+            <button onclick="onSaveMeme()" class="save-meme-btn">Save</button>
+        </section>
+    </header>
+    
+    <main class="main-container flex align-center">
+        <section class="canvas-container">
+            <canvas class="meme-canvas" onclick="canvasClicked(event)"></canvas>
+        </section>
+
+        <section class="options-container flex justify-center space-around wrap">
+                <button onclick="onToggleGalleryModal()" class="open-gallery-modal">Change Pic</button>
+            <section class="flex column justify-center align-center">
+                <label for=".change-txt">Text</label>
+                <input type="text" class="change-txt" onkeyup="onChangeTxt()" placeholder="text"/>
+            </section>
+            <section class="flex column justify-center align-center">
+                <label for=".change-txt-color">Font-color</label>
+                <input type="color" class="change-txt-color" onchange="onChangeTxtColor()"/>
+            </section>
+            <section class="flex column justify-center align-center">
+                <label for=".change-txt-outline-color">Font outline</label>
+                <input type="color" class="change-txt-outline-color" onchange="onChangeTxtOutlineColor()"/>
+            </section>
+            <section class="flex column justify-center align-center">
+                <label for="change-txt-size">Font Size</label>
+                <input type="number" min="5" max="100" class="change-txt-size" onchange="onChangeTxtSize()"/>
+            </section>
+            <section class="flex column justify-center align-center">
+                <label for="change-font">Font</label>
+                <input class="change-font" type="text" list="fonts-list" onchange="onChangeFont()" placeholder="font"/>
+                    <datalist id="fonts-list">
+                        <option value="Arial" label="Arial"/>
+                        <option value="fantasy" label="fantasy"/>
+                    </datalist>
+            </section>
+            <button onclick="onToggleIsAddTxt()" class="add-txt-btn">add txt</button>
+            <button onclick="onToggleIsMoveTxt()" class="move-txt-btn">move txt</button>
+            <button onclick="onRemoveTxt()" class="remove-txt-btn">Remove txt</button>
+        </section>
+    </main>
+
+    <div class="gallery-modal flex column justify-center align-center">
+        <h2 class="modal-title">Choose Picture</h2>
+        <!-- <label for=".image-upload">Upload Image</label>
+        <input type="file" class="image-upload" onchange="onUploadImage()"/> -->
+        <div class="images-container flex space-around align-center wrap"></div>
+    </div>
+
+    <footer></footer>
+    
+    <script src="js/util.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/controler.js"></script>
+</body>
+</html>
