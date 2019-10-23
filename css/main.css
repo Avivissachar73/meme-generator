@@ -60,8 +60,14 @@ header {
     padding: 7px;
 }
 
-canvas {
+.meme-canvas {
     outline: 1px solid black;
+}
+.meme-canvas:hover {
+    cursor: pointer;
+}
+.meme-canvas:hover.clicked {
+    cursor: grab;
 }
 
 .gallery-modal {

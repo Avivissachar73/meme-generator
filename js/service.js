@@ -8,6 +8,22 @@ let gImagesSrcs = createImagesSrcs();
 let gCurrTxtIdx;
 let gIsAddTxt = false;
 let gIsMoveTxt = false;
+let gIsCanvasClick = false;
+
+function toggleIsCanvasClick() {
+    gIsCanvasClick = !gIsCanvasClick;
+}
+
+function canvasClick() {
+    gIsCanvasClick = true;
+}
+function canvasUnClick() {
+    gIsCanvasClick = false;
+}
+
+function getIsCanvasClick() {
+    return gIsCanvasClick;
+}
 
 function createMeme() {
     let meme = loadMemeFromStorage();

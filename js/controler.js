@@ -61,23 +61,54 @@ function renderImagesToModal() {
 }
 
 function canvasClicked(event) {
-    if (getIsAddTxt()) {
-        doAddTextLine(event);
-        updateCurrTxtIdx(1);
-        selectTxt(getCurrTxtIdx());
-        return;
-    }
-    if (getIsMoveTxt()) {
-        doMoveTxtLine(event);
-        selectTxt(getCurrTxtIdx());
-        return;
-    }
+    // if (getIsAddTxt()) {
+    //     doAddTextLine(event);
+    //     updateCurrTxtIdx(1);
+    //     selectTxt(getCurrTxtIdx());
+    //     return;
+    // }
+    // if (getIsMoveTxt()) {
+    //     doMoveTxtLine(event);
+    //     selectTxt(getCurrTxtIdx());
+    //     return;
+    // }
 
     if (!onChangeCurrTxtIdx(event)) {
         console.log('wowowow');
-        // resetCurrTxtIdx();
+        resetCurrTxtIdx();
+        resetInputs();
         renderMeme();
     }
+}
+
+function onToggleIsCanvasClick() {
+    toggleIsCanvasClick();
+}
+
+function onCancasClick() {
+    canvasClick()
+    document.querySelector('.meme-canvas').classList.add('clicked')
+}
+
+function onCanvasUnClick() {
+    canvasUnClick();
+    document.querySelector('.meme-canvas').classList.remove('clicked')
+}
+
+function onAddTxt() {
+    let txts = getMeme().texts;
+    let pos;
+    let splitedCanvasHeight = gElCanvas.height/7;
+    if (txts.length === 0) pos = {x: gElCanvas.width/2, y: splitedCanvasHeight*2}
+    if (txts.length === 1) pos = {x: gElCanvas.width/2, y: splitedCanvasHeight*6}
+    if (txts.length >= 2) pos = {x: gElCanvas.width/2, y: splitedCanvasHeight*4}
+    
+    txts.push(createTxtLine(pos));
+
+    console.log(txts);
+
+    renderMeme();
+    selectTxt(txts.length-1);
 }
 
 function onUploadImage() {
@@ -128,21 +159,35 @@ function selectTxt(idx) {
     document.querySelector('.change-txt-size').value = txt.fontSize;
 }
 
+function resetInputs() {
+    document.querySelector('.change-txt').value = null;
+    document.querySelector('.change-txt-color').value = '#000000';
+    document.querySelector('.change-txt-outline-color').value = '#000000';
+    document.querySelector('.change-txt-size').value = null;
+}
 
 function doChangeCurrTxtIdx(idx) {
-    changeCurrTxtIdx(idx)
+    changeCurrTxtIdx(idx);
 }
 
-function doAddTextLine(event) {
-    onToggleIsAddTxt();
-    getMeme().texts.push(createTxtLine({x: event.offsetX, y: event.offsetY}));
-    renderMeme();
-}
+// function doAddTextLine(event) {
+//     onToggleIsAddTxt();
+//     getMeme().texts.push(createTxtLine({x: event.offsetX, y: event.offsetY}));
+//     renderMeme();
+// }
 
-function doMoveTxtLine(event) {
-    onToggleIsMoveTxt();
+// function doMoveTxtLine(event) {
+//     onToggleIsMoveTxt();
+//     getMeme().texts[getCurrTxtIdx()].pos = {x: event.offsetX, y: event.offsetY};
+//     renderMeme();
+// }
+
+function doMoveTxt(event) {
+    if (!getIsCanvasClick()) return;
+    if (getCurrTxtIdx() === undefined) return
     getMeme().texts[getCurrTxtIdx()].pos = {x: event.offsetX, y: event.offsetY};
     renderMeme();
+    
 }
 
 function onChangeTxt() {
@@ -206,18 +251,18 @@ function onChangeCurrImg(elImg) {
     onToggleGalleryModal();
 }
 
-function onToggleIsAddTxt() {
-    if (getIsMoveTxt()) onToggleIsMoveTxt();
-    toggleIsAddTxt();
-    document.querySelector('.add-txt-btn').classList.toggle('clicked')
-}
+// function onToggleIsAddTxt() {
+//     if (getIsMoveTxt()) onToggleIsMoveTxt();
+//     toggleIsAddTxt();
+//     document.querySelector('.add-txt-btn').classList.toggle('clicked')
+// }
 
-function onToggleIsMoveTxt() {
-    if (getIsAddTxt()) onToggleIsAddTxt();
-    if (getCurrTxtIdx() === undefined) return;
-    toggleIsMoveTxt();
-    document.querySelector('.move-txt-btn').classList.toggle('clicked')
-}
+// function onToggleIsMoveTxt() {
+//     if (getIsAddTxt()) onToggleIsAddTxt();
+//     if (getCurrTxtIdx() === undefined) return;
+//     toggleIsMoveTxt();
+//     document.querySelector('.move-txt-btn').classList.toggle('clicked')
+// }
 
 function onRemoveTxt() {
     if (getCurrTxtIdx() === undefined) return;
