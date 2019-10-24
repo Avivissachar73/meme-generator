@@ -113,12 +113,14 @@ function onToggleIsCanvasClick() {
     toggleIsCanvasClick();
 }
 
-function onCanvasClick() {
+function onCanvasClick(event) {
+    event.preventDefault()
     canvasClick()
     document.querySelector('.meme-canvas').classList.add('clicked')
 }
 
-function onCanvasUnClick() {
+function onCanvasUnClick(event) {
+    event.preventDefault()
     canvasUnClick();
     document.querySelector('.meme-canvas').classList.remove('clicked')
 }
