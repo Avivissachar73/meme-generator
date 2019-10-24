@@ -3,32 +3,46 @@
 const MEME_STORAGE_KEY = 'my_meme';
 const MEME_IMAGES_STORAGE_KEY = 'meme_images_srcs';
 
-let gMeme = createMeme();
-let gImagesSrcs = createImagesSrcs();
-let gCurrTxtIdx;
-let gIsAddTxt = false;
-let gIsMoveTxt = false;
-let gIsCanvasClick = false;
+// let globals.meme = createMeme();
+// let globals.imagesSrcs = createImagesSrcs();
+// let globals.currTxtIdx;
+// let globals.isCanvasClick = false;
+// let gIsAddTxt = false;
+// let gIsMoveTxt = false;
+
+let globals = {
+    meme: createMeme(),
+    imagesSrcs: createImagesSrcs(),
+    currTxtIdx: undefined,
+    isCanvasClick: false,
+}
+
+function switchLines(line1, line2) {
+    // [line1, line2] = [line2, line1];
+    let temp = line1;
+    line1 = line2;
+    line2 = temp;
+}
 
 function toggleIsCanvasClick() {
-    gIsCanvasClick = !gIsCanvasClick;
+    globals.isCanvasClick = !globals.isCanvasClick;
 }
 
 function canvasClick() {
-    gIsCanvasClick = true;
+    globals.isCanvasClick = true;
 }
 function canvasUnClick() {
-    gIsCanvasClick = false;
+    globals.isCanvasClick = false;
 }
 
 function getIsCanvasClick() {
-    return gIsCanvasClick;
+    return globals.isCanvasClick;
 }
 
 function createMeme() {
     let meme = loadMemeFromStorage();
     if (meme) return meme;
-    else return {imgSrc: '', texts: []};
+    else return {imgSrc: `images/Meme_images/X-Everywhere.jpg`, texts: []};
 }
 
 function createImagesSrcs() {
@@ -44,48 +58,48 @@ function getSomeImagesSrcs() {
 }
 
 function getMeme() {
-    return gMeme;
+    return globals.meme;
 }
 
 function getImagesSrcs() {
-    return gImagesSrcs;
+    return globals.imagesSrcs;
 }
 
 function getCurrTxtIdx() {
-    return gCurrTxtIdx;
+    return globals.currTxtIdx;
 }
 
 function changeCurrTxtIdx(idx) {
-    gCurrTxtIdx = idx;
+    globals.currTxtIdx = idx;
 }
 
-function toggleIsAddTxt() {
-    gIsAddTxt = !gIsAddTxt;
-}
+// function toggleIsAddTxt() {
+//     gIsAddTxt = !gIsAddTxt;
+// }
 
-function toggleIsMoveTxt() {
-    gIsMoveTxt = !gIsMoveTxt;
-}
+// function toggleIsMoveTxt() {
+//     gIsMoveTxt = !gIsMoveTxt;
+// }
 
-function getIsAddTxt() {
-    return gIsAddTxt;
-}
+// function getIsAddTxt() {
+//     return gIsAddTxt;
+// }
 
-function getIsMoveTxt() {
-    return gIsMoveTxt;
-}
+// function getIsMoveTxt() {
+//     return gIsMoveTxt;
+// }
 
 function resetCurrTxtIdx() {
-    gCurrTxtIdx = undefined;
+    globals.currTxtIdx = undefined;
 }
 
 function updateCurrTxtIdx(diff) {
-    gCurrTxtIdx = (gCurrTxtIdx === undefined)? 0 : gCurrTxtIdx+diff;
+    globals.currTxtIdx = (globals.currTxtIdx === undefined)? 0 : globals.currTxtIdx+diff;
 }
 
 function createTxtLine(pos) {
     return {txt: `some txt`,
-            fontFamily: 'Arial',
+            fontFamily: 'IMPACT',
             fontSize: 40,
             fontOutlineColor: '#000000',
             fontColor: '#ffffff',
@@ -99,7 +113,7 @@ function loadImagesFromStorage() {
 }
 
 function saveImagesToStorage() {
-    saveObjToStorage(MEME_IMAGES_STORAGE_KEY, gImagesSrcs);
+    saveObjToStorage(MEME_IMAGES_STORAGE_KEY, globals.imagesSrcs);
 }
 
 function loadMemeFromStorage() {
@@ -107,6 +121,6 @@ function loadMemeFromStorage() {
 }
 
 function saveMemeToStorage() {
-    saveObjToStorage(MEME_STORAGE_KEY, gMeme);
+    saveObjToStorage(MEME_STORAGE_KEY, globals.meme);
 }
  

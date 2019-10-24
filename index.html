@@ -9,70 +9,81 @@
     <title>Meme Generator</title>
 </head>
 <body onload="init()">
-    <div class="screen" onclick="onToggleGalleryModal()"></div>
+    <div class="screen" onclick="onClose()"></div>
 
     <header class="flex align-center space-between">
         <h1 class="title">Meme Generator</h1>
-        <section class="header-btns flex align-center space-between wrap">
-            <button onclick="onToggleGalleryModal()" class="open-gallery-modal">gallery</button>
-            <button onclick="onSaveMeme()" class="save-meme-btn">Save</button>
-            <button onclick="onDownloadMeme()" class="download-meme-btn">
+        <button class="main-nav-hamburger align-center" onclick="onToggleNav()">☰</button>
+        <ul class="main-nav clean-list flex align-center space-between wrap">
+            <li class="flex align-center justify-center"><button onclick="onToggleGalleryModal()" class="open-gallery-modal">gallery</button></li>
+            <li class="flex align-center justify-center"><button onclick="onSaveMeme()" class="save-meme-btn">Save</button></li>
+            <li class="flex align-center justify-center"><button onclick="onDownloadMeme()" class="download-meme-btn">
                 <a class="download-link" href="" download="my_meme.jpg">Download</a>
-            </button>
-        </section>
+            </button></li>
+        </ul>
     </header>
     
-    <main class="main-container flex align-center">
-        <section class="canvas-container">
+    <main class="main-container flex align-center space-around">
+        <section class="canvas-container flex align-center justify-center">
             <canvas class="meme-canvas" onclick="canvasClicked(event)" ontouchmove="doMoveTxt(event)" onmousemove="doMoveTxt(event)"
             onmousedown="onCancasClick()" ontouchsend="onCanvasUnClick()" onmouseup="onCanvasUnClick()" ontouchend="onCanvasUnClick()" onmouseout="onCanvasUnClick()"></canvas>
         </section>
 
-        <section class="options-container flex justify-center space-around wrap">
-            <section class="buttons-container flex justify-center space-around wrap">
-                <button onclick="onToggleGalleryModal()" class="open-gallery-modal">Change Pic</button>
+        <section class="options-container flex align-center space-around wrap">
+            <section class="buttons-container flex align-center space-around wrap">
+                <button onclick="onToggleGalleryModal()" class="open-gallery-modal">C.P</button>
                 <!-- <button onclick="onToggleIsAddTxt()" class="add-txt-btn">add txt</button> -->
                 <!-- <button onclick="onToggleIsMoveTxt()" class="move-txt-btn">move txt</button> -->
-                <button onclick="onAddTxt()" class="add-txt-btn">add txt</button>
-                <button onclick="onRemoveTxt()" class="remove-txt-btn">Remove txt</button>
+                <button onclick="onAddTxt()" class="add-txt-btn">+</button>
+                <button onclick="onRemoveTxt()" class="remove-txt-btn">X</button>
             </section>
-            <section class="flex justify-center space-around wrap">
-                <section class="flex column justify-center align-center">
-                    <label for=".change-txt">Text</label>
-                    <input type="text" class="change-txt" onkeyup="onChangeTxt()" placeholder="text"/>
+            <section class="flex align-center space-around wrap">
+                <!-- <button onclick="onSwitchLines()">Switch lines</button> -->
+                <section class="change-txt-section flex column justify-center align-center">
+                    <label for="change-txt">Text</label>
+                    <input id="change-txt" type="text" class="change-txt" onkeyup="onChangeTxt()" placeholder="text"/>
                 </section>
                 <section class="flex column justify-center align-center">
                     <label for="change-txt-size">Font Size</label>
-                    <input type="number" min="5" max="100" class="change-txt-size" onchange="onChangeTxtSize()"/>
+                    <input id="change-txt-size" type="number" min="5" max="100" class="change-txt-size" onchange="onChangeTxtSize()"/>
                 </section>
                 <section class="flex column justify-center align-center">
                     <label for="change-font">Font</label>
-                    <input class="change-font" type="text" list="fonts-list" onchange="onChangeFont()" placeholder="font"/>
-                    <datalist id="fonts-list">
+                    <!-- <input class="change-font" type="text" list="fonts-list" onchange="onChangeFont()" placeholder="font"/>
+                    <datalist id="fonts-list"> -->
+                    <select id="change-font" class="change-font" onchange="onChangeFont()" placeholder="font">
                         <option value="Arial" label="Arial"/>
                         <option value="fantasy" label="fantasy"/>
-                    </datalist>
+                        <option value="IMPACT" label="IMPACT"/>
+                    </select>
+                    <!-- </datalist> -->
+                </section>
+            </section>
+            <section class="flex align-center space-around wrap">
+                <section class="flex column justify-center align-center">
+                    <label for="change-txt-color">Font-color</label>
+                    <input id="change-txt-color" type="color" class="change-txt-color" onchange="onChangeTxtColor()"/>
                 </section>
                 <section class="flex column justify-center align-center">
-                    <label for=".change-txt-color">Font-color</label>
-                    <input type="color" class="change-txt-color" onchange="onChangeTxtColor()"/>
-                </section>
-                <section class="flex column justify-center align-center">
-                    <label for=".change-txt-outline-color">Font outline</label>
-                    <input type="color" class="change-txt-outline-color" onchange="onChangeTxtOutlineColor()"/>
+                    <label for="change-txt-outline-color">Font outline</label>
+                    <input id="change-txt-outline-color" type="color" class="change-txt-outline-color" onchange="onChangeTxtOutlineColor()"/>
                 </section>
             </section>
         </section>
     </main>
 
-    <div class="gallery-modal flex column justify-center align-center">
-        <h2 class="modal-title">Choose Picture</h2>
-        <!-- <label for=".image-upload">Upload Image</label>
-        <input type="file" class="image-upload" onchange="onUploadImage()"/> -->
+    <div class="gallery-modal flex column align-center">
+        <h2 class="modal-title flex align-center justify-center">Choose Picture</h2>
+        <section class="flex column align-center justify-center">
+            <label for="image-upload">Upload Image</label>
+            <input id="image-upload" type="file" class="image-upload" onchange="onUploadImage()"/>
+        </section>
         <div class="images-container flex space-around align-center wrap"></div>
     </div>
 
-    <footer></footer>
+    <footer>
+        <h6>aviv issachar</h6>
+    </footer>
     
     <script src="js/util.js"></script>
     <script src="js/service.js"></script>
