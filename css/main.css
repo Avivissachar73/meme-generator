@@ -329,6 +329,10 @@ body.show-modal .gallery-modal {
         margin: 5%;
         width: 95%;
     }
+    .options-container button {
+        width: 40px;
+        height: 40px;
+    }
 }
 @media (max-width: 370px) {
     .canvas-container {
