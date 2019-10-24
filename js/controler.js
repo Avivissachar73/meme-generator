@@ -10,7 +10,7 @@ function init() {
     renderMeme();
     document.querySelector('.meme-canvas').addEventListener('touchmove', function(event) {
         event.preventDefault();
-        brushMove();
+        doMoveTxt(event);
     },false);
 }
 
