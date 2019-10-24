@@ -30,7 +30,6 @@ button {
     background: none;
     background-image: unset;
     border: none;
-    background-color: rgba(195, 232, 189);
     outline: 1px solid dimgray;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
@@ -39,8 +38,8 @@ button {
 
 button:hover {
     cursor: pointer;
-    background-color: rgba(107, 138, 167);
 }
+
 button:active {
     background-color: whitesmoke;
 }
@@ -98,6 +97,14 @@ header .main-nav > *, li button {
     width: 100px;
 }
 
+
+.main-nav button {
+    background-color: rgba(195, 232, 189);
+}
+.main-nav button:hover {
+    background-color: rgba(107, 138, 167);
+}
+
 .main-nav.open {
     transform: translate(0, 50%);
 }
@@ -146,6 +153,8 @@ header .main-nav > *, li button {
     font-size: 1.5rem;
     font-weight: 600;
 }
+
+
 .options-container button:hover {background-color: rgba(107, 138, 167, 0.5);}
 
 .options-container > * {
