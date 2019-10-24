@@ -28,7 +28,7 @@
             <canvas class="meme-canvas" onclick="canvasClicked(event)" onmousemove="doMoveTxt(event)"
             onmousedown="onCanvasClick(event)"
             onmouseup="onCanvasUnClick(event)" onmouseout="onCanvasUnClick(event)"
-            ontouchmove="doMoveTxt(event)" ontouchstart="onCanvasClick(event)" ontouchend="onCanvasUnClick(event)"
+            ontouchmove="doMoveTxt(event)" ontouchstart="canvasClicked(event);onCanvasClick(event)" ontouchend="onCanvasUnClick(event)"
             ></canvas> 
         </section>
 
