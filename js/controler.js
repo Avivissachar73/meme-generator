@@ -8,6 +8,10 @@ function init() {
     setCanvas();
     renderImagesToModal();
     renderMeme();
+    document.querySelector('.meme-canvas').addEventListener('touchmove', function(event) {
+        event.preventDefault();
+        brushMove();
+    },false);
 }
 
 function setCanvas() {
