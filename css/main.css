@@ -332,7 +332,7 @@ body.show-modal .gallery-modal {
 }
 @media (max-width: 370px) {
     .canvas-container {
-        width: 60%;
-        width: 80%;
+        width: 70%;
+        /* width: 80%; */
     }
 }
