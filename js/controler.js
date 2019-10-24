@@ -79,7 +79,7 @@ function canvasClicked(event) {
     // }
     event.preventDefault();
     if (!onChangeCurrTxtIdx(event)) {
-        console.log('wowowow');
+        // console.log('wowowow');
         resetCurrTxtIdx();
         resetInputs();
         renderMeme();
@@ -95,7 +95,7 @@ function onSwitchLines() {
         // let temp = txts[0];
         // txts[0] = txts[1];
         // txts[1] = temp;
-        console.log('wowow')
+        // console.log('wowow')
         renderMeme();
     }
 }
@@ -105,14 +105,14 @@ function onToggleIsCanvasClick() {
 }
 
 function onCanvasClick(event) {
-    console.log('click!')
+    // console.log('click!')
     event.preventDefault()
     canvasClick()
     document.querySelector('.meme-canvas').classList.add('clicked')
 }
 
 function onCanvasUnClick(event) {
-    console.log('unclick..')
+    // console.log('unclick..')
     event.preventDefault();
     canvasUnClick();
     document.querySelector('.meme-canvas').classList.remove('clicked')
@@ -134,7 +134,7 @@ function onAddTxt() {
 
 function onUploadImage() {
     var elImgSrc = document.querySelector('.image-upload');
-    console.log(elImgSrc.value)
+    // console.log(elImgSrc.value)
     getImagesSrcs().unshift(elImgSrc.value);
     saveImagesToStorage();
     renderImagesToModal();
@@ -145,9 +145,13 @@ function onUploadImage() {
 function onChangeCurrTxtIdx(event) {
     var txts = getMeme().texts;
 
+    // let clickedPos = (event.offsetX?)
+    let clickedPos = (event.offsetX)? {x: event.offsetX, y: event.offsetY} : {x: event.touches[0].clientX-event.touches[0].target.offsetLeft,
+                                                                              y: event.touches[0].clientY-event.touches[0].target.offsetTop}; 
+
     for (let i = 0; i < txts.length; i++) {
-        if (event.offsetX < txts[i].pos.x+150 && event.offsetX > txts[i].pos.x-150 &&
-            event.offsetY < txts[i].pos.y+5 && event.offsetY > txts[i].pos.y-50) {
+        if (clickedPos.x < txts[i].pos.x+150 && clickedPos.x > txts[i].pos.x-150 &&
+            clickedPos.y < txts[i].pos.y+5 && clickedPos.y > txts[i].pos.y-50) {
 
             selectTxt(i);
             return txts[i];
@@ -215,7 +219,7 @@ function doMoveTxt(event) {
                                                                        y: event.touches[0].clientY-event.touches[0].target.offsetTop};
     getMeme().texts[getCurrTxtIdx()].pos = pos;
     // console.log('moving txt to:', pos)
-    console.log(event.touches)
+    // console.log(event.touches)
     renderMeme();
 }
 
