@@ -220,7 +220,7 @@ input[type="color"]:hover, input[type="number"]:hover, select:hover {
 
 
 
-.images-container {
+.modal-items-container {
     height: 90%;
     width: 100%;
 }
@@ -229,13 +229,13 @@ body.show-modal .gallery-modal {
     visibility: visible;
 }
 
-.gallery-modal img {
+.modal-items-container > * {
     height: 100px;
     width: 100px;
     margin: 5px;
     object-fit: cover;
 }
-.gallery-modal img:hover {
+.modal-items-container > *:hover {
     cursor: pointer;
     outline: 1px solid #fff;
 }
@@ -300,7 +300,7 @@ body.show-modal .gallery-modal {
         position: fixed;
         flex-direction: column;
         right: 0;
-        top: -41px;
+        top: -66px;
         transform: translate(101%,50%);
     }
     header .main-nav > * {
