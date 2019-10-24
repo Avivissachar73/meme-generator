@@ -8,18 +8,18 @@ function init() {
     setCanvas();
     renderImagesToModal();
     renderMeme();
-    document.querySelector('.meme-canvas').addEventListener('touchmove', function(event) {
-        event.preventDefault();
-        doMoveTxt(event);
-    },false);
-    document.querySelector('.meme-canvas').addEventListener('touchstart', function(event) {
-        event.preventDefault();
-        doMoveTxt(event);
-    },false);
-    document.querySelector('.meme-canvas').addEventListener('touchend', function(event) {
-        event.preventDefault();
-        onCanvasUnClick();
-    },false);
+    // document.querySelector('.meme-canvas').addEventListener('touchmove', function(event) {
+    //     event.preventDefault();
+    //     doMoveTxt(event);
+    // },false);
+    // document.querySelector('.meme-canvas').addEventListener('touchstart', function(event) {
+    //     event.preventDefault();
+    //     onCanvasClick();
+    // },false);
+    // document.querySelector('.meme-canvas').addEventListener('touchend', function(event) {
+    //     event.preventDefault();
+    //     onCanvasUnClick();
+    // },false);
 }
 
 function setCanvas() {
@@ -113,7 +113,7 @@ function onToggleIsCanvasClick() {
     toggleIsCanvasClick();
 }
 
-function onCancasClick() {
+function onCanvasClick() {
     canvasClick()
     document.querySelector('.meme-canvas').classList.add('clicked')
 }
