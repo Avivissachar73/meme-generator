@@ -12,6 +12,14 @@ function init() {
         event.preventDefault();
         doMoveTxt(event);
     },false);
+    document.querySelector('.meme-canvas').addEventListener('touchstart', function(event) {
+        event.preventDefault();
+        doMoveTxt(event);
+    },false);
+    document.querySelector('.meme-canvas').addEventListener('touchend', function(event) {
+        event.preventDefault();
+        onCanvasUnClick();
+    },false);
 }
 
 function setCanvas() {
