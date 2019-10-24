@@ -8,18 +8,9 @@ function init() {
     setCanvas();
     renderImagesToModal();
     renderMeme();
-    // document.querySelector('.meme-canvas').addEventListener('touchmove', function(event) {
-    //     event.preventDefault();
-    //     doMoveTxt(event);
-    // },false);
-    // document.querySelector('.meme-canvas').addEventListener('touchstart', function(event) {
-    //     event.preventDefault();
-    //     onCanvasClick();
-    // },false);
-    // document.querySelector('.meme-canvas').addEventListener('touchend', function(event) {
-    //     event.preventDefault();
-    //     onCanvasUnClick();
-    // },false);
+    // document.querySelector('.meme-canvas').addEventListener('touchmove', doMoveTxt);
+    // document.querySelector('.meme-canvas').addEventListener('touchstart', onCanvasClick);
+    // document.querySelector('.meme-canvas').addEventListener('touchend', onCanvasUnClick);
 }
 
 function setCanvas() {
@@ -114,13 +105,15 @@ function onToggleIsCanvasClick() {
 }
 
 function onCanvasClick(event) {
+    console.log('click!')
     event.preventDefault()
     canvasClick()
     document.querySelector('.meme-canvas').classList.add('clicked')
 }
 
 function onCanvasUnClick(event) {
-    event.preventDefault()
+    console.log('unclick..')
+    event.preventDefault();
     canvasUnClick();
     document.querySelector('.meme-canvas').classList.remove('clicked')
 }
@@ -134,8 +127,6 @@ function onAddTxt() {
     if (txts.length >= 2) pos = {x: gElCanvas.width/2, y: splitedCanvasHeight*4}
     
     txts.push(createTxtLine(pos));
-
-    console.log(txts);
 
     renderMeme();
     selectTxt(txts.length-1);
@@ -220,7 +211,11 @@ function doMoveTxt(event) {
     event.preventDefault();
     if (!getIsCanvasClick()) return;
     if (getCurrTxtIdx() === undefined) return
-    getMeme().texts[getCurrTxtIdx()].pos = {x: event.offsetX, y: event.offsetY};
+    let pos = (event.offsetX)? {x: event.offsetX, y: event.offsetY} : {x: event.touches[0].clientX-event.touches[0].target.offsetLeft, 
+                                                                       y: event.touches[0].clientY-event.touches[0].target.offsetTop};
+    getMeme().texts[getCurrTxtIdx()].pos = pos;
+    // console.log('moving txt to:', pos)
+    console.log(event.touches)
     renderMeme();
 }
 
