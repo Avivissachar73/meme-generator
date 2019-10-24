@@ -74,7 +74,7 @@ function canvasClicked(event) {
     //     selectTxt(getCurrTxtIdx());
     //     return;
     // }
-    // event.preventDepault();
+    event.preventDefault();
     if (!onChangeCurrTxtIdx(event)) {
         console.log('wowowow');
         resetCurrTxtIdx();
@@ -203,7 +203,7 @@ function doChangeCurrTxtIdx(idx) {
 // }
 
 function doMoveTxt(event) {
-    // event.preventDepault();
+    event.preventDefault();
     if (!getIsCanvasClick()) return;
     if (getCurrTxtIdx() === undefined) return
     getMeme().texts[getCurrTxtIdx()].pos = {x: event.offsetX, y: event.offsetY};
