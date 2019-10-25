@@ -396,12 +396,12 @@ body.show-modal .gallery-modal {
         display: block;
     }
     header, footer {
-        min-height: 5vh;
+        height: 5%;
     }
     .main-container {
         flex-direction: column;
         padding: 15px;
-        min-height: 90vh;
+        height: 90%;
     }
     .canvas-container {
         margin-right: 0;
