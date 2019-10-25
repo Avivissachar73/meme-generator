@@ -163,7 +163,7 @@ function onClose() {
 }
 
 function onOpenImagesModal() {
-    document.querySelector('.gallery-images-options').classList.add('open');
+    document.querySelector('.gallery-images-options').style.display = 'flex';
     renderImagesToModal(getImagesSrcs());
     // onToggleModal();
     openModal()
@@ -213,7 +213,8 @@ function onDownloadMeme() {
 function onChangeCurrImg(elImg) {
     getMeme().imgSrc = elImg.src;
     renderMeme(getMeme(), gElCanvas, gElMemeImage);
-    onToggleModal();
+    // onToggleModal();
+    onClose()
     // onOpenImagesModal();
 }
 
