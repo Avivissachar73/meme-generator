@@ -34,12 +34,6 @@ function renderMeme(meme, canvas, elMemeImage) {
 }
 
 
-function showModal() {
-    document.body.classList.toggle('show-modal');
-    document.querySelector('.main-nav').classList.remove('open');
-}
-
-
 function doRenderImagesToModal() {
     renderImagesToModal()
 }
@@ -53,6 +47,14 @@ function renderImagesToModal(imagesSrcsToShow) {
     document.querySelector('.modal-items-container').innerHTML = htmlStr;
 }
 
+
+function renderEmogies() {
+    let emogiesToShow = getEmogiesToShow();
+    let htmlStr = emogiesToShow.map((emogie, idx) => {
+        return `<div onClick="onAddEmogie(${idx+getPrevEmogiesCount()})">${emogie}</div>`
+    }).join('');
+    document.querySelector('.emogies-container').innerHTML = htmlStr;
+}
 
 // function onSwitchLines() {
 //     var txts = getMeme().texts;

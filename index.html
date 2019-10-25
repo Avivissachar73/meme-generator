@@ -13,14 +13,14 @@
 
     <header class="flex align-center space-between">
         <h1 class="title">Meme Generator</h1>
-        <button class="main-nav-hamburger align-center" onclick="onToggleNav()">☰</button>
+        <button class="main-nav-hamburger align-center" onclick="onOpenNav()">☰</button>
         <ul class="main-nav clean-list flex align-center space-between wrap">
-            <li class="flex align-center justify-center"><button onclick="onRenderImagesToModal()" class="open-gallery-modal">gallery</button></li>
+            <li class="flex align-center justify-center"><button onclick="onOpenImagesModal()()" class="open-gallery-modal">gallery</button></li>
             <li class="flex align-center justify-center"><button onclick="onSaveMeme()" class="save-meme-btn">Save</button></li>
             <li class="flex align-center justify-center"><button onclick="onDownloadMeme()" class="download-meme-btn">
                     <a class="download-link" href="" download="my_meme.jpg">Download</a>
                 </button></li>
-            <li class="flex align-center justify-center"><button onclick="onRenderMemesToGallery()" class="show-memes-btn">Your memes</button></li>
+            <li class="flex align-center justify-center"><button onclick="onOpenMemesModal()" class="show-memes-btn">Your memes</button></li>
         </ul>
     </header>
     
@@ -35,8 +35,9 @@
 
         <section class="options-container flex align-center space-around wrap">
             <section class="buttons-container flex align-center space-around wrap">
-                <button onclick="onRenderImagesToModal()" class="open-gallery-modal">&#10063;</button>
+                <button onclick="onOpenImagesModal()" class="open-gallery-modal">&#10063;</button>
                 <button onclick="onAddTxt()" class="add-txt-btn">&#9998;</button>
+                <button onclick="onOpenEmogiesModal()" class="add-emogie-btn">😃</button>
                 <button onclick="onRemoveTxt()" class="remove-txt-btn">&#9851;</button>
             </section>
             <section class="flex align-center space-around wrap">
@@ -73,17 +74,23 @@
         </section>
     </main>
 
-    <div class="gallery-modal flex column align-center">
+    <div class="emogies-nav-bar-modal align-center justify-center">
+        <button class="prev-emogie-page" onclick="onUpdateCurrEmogiesPage(-1)">&#8249;</button>
+        <div class="emogies-container flex align-center space-between"></div>
+        <button class="next-emogie-page" onclick="onUpdateCurrEmogiesPage(1)">&#8250;</button>
+    </div>
+
+    <div class="gallery-modal column align-center">
         <div class="canvases-images-container" style="position: absolute;top: -200000000vh;visibility: hidden;"></div>
         <h2 class="modal-title flex align-center justify-center">Choose Picture</h2>
-        <section class="flex column align-center justify-center">
+        <section class="gallery-images-options align-center justify-center">
             <section>
                 <label for="image-upload">Upload Image</label>
                 <input id="image-upload" type="file" class="image-upload" onchange="onUploadImage()"/>
             </section>
             <section>
-                <input type="test" placeholder="search" class="images-search-line"/>
-                <button onclick="onSearchImages()">search</button>
+                <input type="test" placeholder="Search" onkeyup="onSearchImages()" class="images-search-line"/>
+                <!-- <button onclick="onSearchImages()">search</button> -->
             </section>
         </section>
         <div class="modal-items-container flex space-around align-center wrap"></div>

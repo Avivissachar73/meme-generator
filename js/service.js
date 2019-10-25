@@ -3,24 +3,49 @@
 const MEMES_STORAGE_KEY = 'my_memes';
 const MEME_IMAGES_STORAGE_KEY = 'meme_images_srcs';
 
-let globals = {
+let appData = {
     meme: createMeme(),
     memes: loadMemesFromStorage(),
     imagesSrcs: createImagesSrcs(),
+    emogies: getEmogies(),
     currTxtIdx: undefined,
     isCanvasClick: false,
+    currEmogiesPage: 0,
+    emogiesPerPage: 5
+}
+
+function getPrevEmogiesCount() {
+    return  (appData.currEmogiesPage)*appData.emogiesPerPage;
+}
+
+function getCurrEmogiesPage() {
+    return appData.currEmogiesPage;
+}
+
+function updateEmogiePage(dif) {
+    appData.currEmogiesPage = (dif === 0)? 0 : appData.currEmogiesPage+dif;
+    if (appData.currEmogiesPage < 0) appData.currEmogiesPage = parseInt((appData.emogies.length-1)/appData.emogiesPerPage);
+    if (appData.currEmogiesPage >= appData.emogies.length/appData.emogiesPerPage) appData.currEmogiesPage = 0;
+}
+
+function getEmogiesToShow() {
+    return appData.emogies.slice(appData.currEmogiesPage*appData.emogiesPerPage, appData.currEmogiesPage*appData.emogiesPerPage+ appData.emogiesPerPage);
+}
+
+function getEmogies() {
+    return ['😃','😄','😀','😁','😆','😅','🤣','😂','🙂','🙃','😉','😊','😇','😍','🤩','😘','😗','☺','🤧','🤯','🤠','😎','🧐','😮','😲','😭','😱','😖','😞','😓','😩','😤','😠','😈','☠','💩']
 }
 
 function getAllMemes() {
-    return globals.memes;
+    return appData.memes;
 }
 
 function updateCurrMeme(meme) {
-    globals.meme = meme;
+    appData.meme = meme;
 }
 
 function updateMemes() {
-    globals.memes.push(globals.meme);
+    appData.memes.push(appData.meme);
 }
 
 function switchLines(line1, line2) {
@@ -31,18 +56,18 @@ function switchLines(line1, line2) {
 }
 
 function toggleIsCanvasClick() {
-    globals.isCanvasClick = !globals.isCanvasClick;
+    appData.isCanvasClick = !appData.isCanvasClick;
 }
 
 function canvasClick() {
-    globals.isCanvasClick = true;
+    appData.isCanvasClick = true;
 }
 function canvasUnClick() {
-    globals.isCanvasClick = false;
+    appData.isCanvasClick = false;
 }
 
 function getIsCanvasClick() {
-    return globals.isCanvasClick;
+    return appData.isCanvasClick;
 }
 
 function createMeme() {
@@ -76,39 +101,39 @@ function getSomeImagesSrcs() {
 
 function getImagesSrcsToShow(str) {
     let strs = str.split(' ');
-    return globals.imagesSrcs.filter(imageSrc => {
+    return appData.imagesSrcs.filter(imageSrc => {
         for (let i = 0; i < strs.length; i++) {
-            if (imageSrc.includes(str)) return true;
+            if (imageSrc.toLowerCase().includes(str.toLowerCase())) return true;
         }
     })
 }
 
 function getMeme() {
-    return globals.meme;
+    return appData.meme;
 }
 
 function getImagesSrcs() {
-    return globals.imagesSrcs;
+    return appData.imagesSrcs;
 }
 
 function getCurrTxtIdx() {
-    return globals.currTxtIdx;
+    return appData.currTxtIdx;
 }
 
 function changeCurrTxtIdx(idx) {
-    globals.currTxtIdx = idx;
+    appData.currTxtIdx = idx;
 }
 
 function resetCurrTxtIdx() {
-    globals.currTxtIdx = undefined;
+    appData.currTxtIdx = undefined;
 }
 
 function updateCurrTxtIdx(diff) {
-    globals.currTxtIdx = (globals.currTxtIdx === undefined)? 0 : globals.currTxtIdx+diff;
+    appData.currTxtIdx = (appData.currTxtIdx === undefined)? 0 : appData.currTxtIdx+diff;
 }
 
-function createTxtLine(pos) {
-    return {txt: `some txt`,
+function createTxtLine(pos, txt = 'some txt') {
+    return {txt: txt,
             fontFamily: `Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif`,
             fontSize: 40,
             fontOutlineColor: '#000000',
@@ -123,7 +148,7 @@ function loadImagesFromStorage() {
 }
 
 function saveImagesToStorage() {
-    saveObjToStorage(MEME_IMAGES_STORAGE_KEY, globals.imagesSrcs);
+    saveObjToStorage(MEME_IMAGES_STORAGE_KEY, appData.imagesSrcs);
 }
 
 function loadMemesFromStorage() {
@@ -132,6 +157,6 @@ function loadMemesFromStorage() {
 }
 
 function saveMemeToStorage() {
-    saveObjToStorage(MEMES_STORAGE_KEY, globals.memes);
+    saveObjToStorage(MEMES_STORAGE_KEY, appData.memes);
 }
  

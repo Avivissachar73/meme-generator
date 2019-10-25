@@ -65,7 +65,7 @@ button.clicked {
     cursor: pointer;
 }
 
-body.show-modal .screen, body.open .screen  {
+.screen.open  {
     visibility: visible;
 }
 
@@ -141,7 +141,7 @@ header .main-nav > *, li button {
 
 .canvas-container {
     margin-right: 10%;
-    width: 60%;
+    width: 35%;
 }
 
 .options-container {
@@ -204,19 +204,59 @@ input[type="color"]:hover, input[type="number"]:hover, select:hover {
     cursor: grab;
 }
 
+.emogies-nav-bar-modal.open {
+    display: flex;
+}
+
+.emogies-nav-bar-modal {
+    position: absolute;
+    border: 3px solid #8693AB;
+    background-color: #FBFFF1;
+    max-width: 300px;
+    min-height: 50px;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    /* visibility: hidden; */
+    display: none;
+}
+
+.emogies-nav-bar-modal > * {
+    height: 100%;
+}
+.emogies-nav-bar-modal button {
+    background-color: unset;
+    outline: unset;
+    width: 10%;
+}
+.emogies-container {
+    width: 80%
+}
+.emogies-container > * {
+    font-size: 30px;
+}
+.emogies-container > *:hover {
+    cursor: pointer;
+}
+
+
 .gallery-modal {
-    position: fixed;
+    position: absolute;
     border: 3px solid #8693AB;
     background-color: #FBFFF1;
     /* background-color: cadetblue;
     border: 3px solid tomato; */
-    border-radius: 3px;
-    width: 75vw;
-    min-height: 75vh;
-    bottom: 50%;
+    /* border-radius: 3px; */
+    width: 80vw;
+    min-height: 80vh;
+    top: 10%;
     right: 50%;
-    transform: translate(50%, 50%);
-    visibility: hidden;
+    transform: translate(50%, 0);
+    /* visibility: hidden; */
+    display: none;
+}
+.gallery-modal.open {
+    display: flex;
 }
 
 .gallery-modal > *:not(:last-child) {
@@ -236,10 +276,12 @@ input[type="color"]:hover, input[type="number"]:hover, select:hover {
 }
 
 body.show-modal .gallery-modal {
-    visibility: visible;
+    /* visibility: visible; */
+    display: flex;
 }
 
 .modal-items-container > * {
+    background-color: wheat;
     height: 100px;
     width: 100px;
     margin: 5px;
@@ -329,11 +371,13 @@ body.show-modal .gallery-modal {
     .main-container {
         flex-direction: column;
         padding: 15px;
-        height: 85%;
+        height: 90%;
     }
     .canvas-container {
         margin-right: 0;
-        width: 70%;
+        margin: 5% 0;
+        height: 70%;
+        width: 60%;
     }
     .options-container {
         height: 30%;
