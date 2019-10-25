@@ -35,6 +35,7 @@ function canvasClicked(event) {
         resetInputs();
         renderMeme(getMeme(), gElCanvas, gElMemeImage);
     }
+    else document.querySelector('.change-txt').focus(); 
 }
 
 
