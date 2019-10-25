@@ -73,6 +73,16 @@ function getSomeImagesSrcs() {
             `images/Meme_images/X-Everywhere.jpg`];
 }
 
+
+function getImagesSrcsToShow(str) {
+    let strs = str.split(' ');
+    return globals.imagesSrcs.filter(imageSrc => {
+        for (let i = 0; i < strs.length; i++) {
+            if (imageSrc.includes(str)) return true;
+        }
+    })
+}
+
 function getMeme() {
     return globals.meme;
 }
