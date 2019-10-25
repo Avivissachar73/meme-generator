@@ -189,9 +189,9 @@ header .main-nav > *, li button {
 
 .options-container [type="color"] {
     -webkit-appearance: unset;
-    background-color: unset;
+    background-color: #ffffff;
     padding: 0;
-    border: 3px solid #8693AB;
+    border: 1px solid #8693AB;
 }
 
 input[type="color"]:hover, input[type="number"]:hover, select:hover {
