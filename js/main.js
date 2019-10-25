@@ -207,7 +207,8 @@ function openModal() {
 
 function onDownloadMeme() {
     document.querySelector('.download-link').href = gElCanvas.toDataURL();
-    document.querySelector('.main-nav').classList.remove('open');
+    // document.querySelector('.main-nav').classList.remove('open');
+    onClose();
 }
 
 function onChangeCurrImg(elImg) {
