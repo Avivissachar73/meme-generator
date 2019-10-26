@@ -421,6 +421,9 @@ body.show-modal .gallery-modal {
         width: 33.33333%;
         flex-direction: column;
     }
+    .options-container section:not(first-child) section:not(last-child) {
+        margin-bottom: 25px;
+    }
 }
 @media (max-width: 470px) {
     

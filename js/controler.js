@@ -34,17 +34,23 @@ function renderMeme(meme, canvas, elMemeImage) {
 }
 
 
-function doRenderImagesToModal() {
-    renderImagesToModal()
-}
-
 function renderImagesToModal(imagesSrcsToShow) {
-    document.querySelector('.modal-title').innerText = 'Choose a Picture';
     var htmlStr = imagesSrcsToShow.map(imgSrc => {
         return `<img onclick="onChangeCurrImg(this)" src="${imgSrc}" alt="">`
     }).join('');
 
     document.querySelector('.modal-items-container').innerHTML = htmlStr;
+}
+
+
+function renderMemesGallery() {
+    let elContainer = document.querySelector('.modal-items-container')
+    getAllMemes().forEach((meme, idx) => {
+        elContainer.innerHTML += `<canvas onclick="onChangeMeme(${idx})" width="100" height="100"><canvas>`;
+        gGalleryMemesImages[idx] = new Image();
+        let elCanvas = document.querySelector('.modal-items-container').children[document.querySelector('.modal-items-container').children.length-1]
+        renderMeme(meme, elCanvas, gGalleryMemesImages[idx]);
+    });
 }
 
 
@@ -55,24 +61,6 @@ function renderEmogies() {
     }).join('');
     document.querySelector('.emogies-container').innerHTML = htmlStr;
 }
-
-// function onSwitchLines() {
-//     var txts = getMeme().texts;
-
-//     if (txts.length > 1) {
-//         switchLines(txts[0], txts[1]);
-//         renderMeme(getMeme(), gElCanvas, gElMemeImage);
-//     }
-// }
-
-// function onUploadImage() {
-//     var elImgSrc = document.querySelector('.image-upload');
-//     getImagesSrcs().unshift(elImgSrc.value);
-//     saveImagesToStorage();
-//     renderImagesToModal();
-
-//     elImgSrc.value = null;
-// }
 
 
 function selectTxt(idx) {
@@ -94,7 +82,7 @@ function selectTxt(idx) {
     document.querySelector('.change-txt-size').value = txt.fontSize;
     document.querySelector('.change-font').value = txt.fontFamily;
 
-    document.querySelector('.change-txt').focus();
+    // document.querySelector('.change-txt').focus();
 }
 
 function resetInputs() {

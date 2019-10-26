@@ -48,12 +48,6 @@ function updateMemes() {
     appData.memes.push(appData.meme);
 }
 
-function switchLines(line1, line2) {
-    // [line1, line2] = [line2, line1];
-    let temp = line1;
-    line1 = line2;
-    line2 = temp;
-}
 
 function toggleIsCanvasClick() {
     appData.isCanvasClick = !appData.isCanvasClick;
@@ -71,9 +65,6 @@ function getIsCanvasClick() {
 }
 
 function createMeme() {
-    // let meme = loadMemesFromStorage();
-    // if (meme) return meme;
-    // else return {imgSrc: `images/Meme_images/X-Everywhere.jpg`, texts: []};
     return {imgSrc: `images/Meme_images/X-Everywhere.jpg`, texts: []};
 }
 
