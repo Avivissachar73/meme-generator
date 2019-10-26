@@ -15,12 +15,12 @@
         <h1 class="title">Meme Generator</h1>
         <button class="main-nav-hamburger align-center" onclick="onOpenNav()">☰</button>
         <ul class="main-nav clean-list flex align-center space-between wrap">
-            <li class="flex align-center justify-center"><button onclick="onOpenImagesModal()" class="open-gallery-modal">gallery</button></li>
+            <!-- <li class="flex align-center justify-center"><button onclick="onOpenImagesModal()" class="open-gallery-modal">gallery</button></li> -->
+            <li class="flex align-center justify-center"><button onclick="onOpenMemesModal()" class="show-memes-btn">Your memes</button></li>
             <li class="flex align-center justify-center"><button onclick="onSaveMeme()" class="save-meme-btn">Save</button></li>
             <li class="flex align-center justify-center"><button onclick="onDownloadMeme()" class="download-meme-btn">
                     <a class="download-link" href="" download="my_meme.jpg">Download</a>
                 </button></li>
-            <li class="flex align-center justify-center"><button onclick="onOpenMemesModal()" class="show-memes-btn">Your memes</button></li>
         </ul>
     </header>
     
@@ -79,7 +79,7 @@
     <div class="gallery-modal column align-center">
         <div class="canvases-images-container" style="position: absolute;top: -200000000vh;visibility: hidden;"></div>
         <h2 class="modal-title flex align-center justify-center">Choose Picture</h2>
-        <section class="gallery-images-options align-center justify-center wrap">
+        <section class="gallery-images-options align-center space-around wrap">
             <section>
                 <!-- <label for="image-upload">Upload Image</label> -->
                 <!-- <input id="image-upload" type="file" class="image-upload" onchange="onUploadImage(event)"/> -->

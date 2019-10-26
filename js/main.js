@@ -10,6 +10,7 @@ let gGalleryMemesImages = [];
 function init() {
     setCanvas();
     renderMeme(getMeme(), gElCanvas, gElMemeImage);
+    onOpenImagesModal();
 }
 
 function setCanvas() {
@@ -133,6 +134,8 @@ function onAddTxt() {
 
     renderMeme(getMeme(), gElCanvas, gElMemeImage);
     selectTxt(txts.length-1);
+
+    document.querySelector('.change-txt').focus();
 }
 
 

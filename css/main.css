@@ -286,6 +286,13 @@ input[type="color"]:hover, input[type="number"]:hover, select:hover {
     display: flex;
 }
 
+.gallery-images-options {
+    width: 100%;
+}
+.gallery-images-options > * {
+    margin-bottom: 10px;
+}
+
 .gallery-modal > *:not(:last-child) {
     border-bottom: 1px solid whitesmoke;
     margin-bottom: 10px;
@@ -381,13 +388,13 @@ body.show-modal .gallery-modal {
         position: fixed;
         flex-direction: column;
         right: 0;
-        /* top: -66px; */
-        top: -10vh;
+        top: -3.75vh;
         transform: translate(101%,50%);
     }
     header .main-nav > * {
         width: 40vw;
-        height: 50px;
+        height: 7.5vh;
+        /* height: 50px; */
     }
     .main-nav button {
         width: 100%;
