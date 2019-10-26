@@ -258,6 +258,7 @@ input[type="color"]:hover, input[type="number"]:hover, select:hover {
     width: 80%
 }
 .emogies-container > * {
+    text-align: center;
     width: 50px;
     font-size: 30px;
 }
@@ -428,7 +429,7 @@ body.show-modal .gallery-modal {
         width: 33.33333%;
         flex-direction: column;
     }
-    .options-container section:not(first-child) section:not(last-child) {
+    .toxt-options > :not(:last-child), .color-options > :not(:last-child) {
         margin-bottom: 25px;
     }
 }
