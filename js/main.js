@@ -108,6 +108,7 @@ function onAddEmogie(idx) {
 function onChangeMeme(idx) {
     updateCurrMeme(getAllMemes()[idx]);
     renderMeme(getAllMemes()[idx], gElCanvas, gElMemeImage);
+    resetInputs();
     onClose();
 }
 
