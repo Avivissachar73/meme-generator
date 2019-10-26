@@ -241,6 +241,5 @@ function onRemoveTxt() {
 function onSaveMeme() {
     updateMemes();
     saveMemeToStorage();
-    document.querySelector('.main-nav').classList.remove('open');
-    document.body.classList.remove('open');
+    onClose();
 }
