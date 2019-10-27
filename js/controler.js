@@ -2,12 +2,15 @@
 
 function renderMeme(meme, canvas, elMemeImage, container) {
     elMemeImage.src = meme.imgSrc;
+
     let originalWidth = canvas.width;
-    let biggestDamention = (elMemeImage.width > elMemeImage.height)? 'width' : 'height';
-    let smallestDamention = (elMemeImage.width < elMemeImage.height)? 'width' : 'height';
-    let imageRetio = elMemeImage[smallestDamention] / elMemeImage[biggestDamention];
-    canvas[biggestDamention] = originalWidth;
-    canvas[smallestDamention] = originalWidth*imageRetio;
+    let biggestSize = (elMemeImage.width > elMemeImage.height)? 'width' : 'height';
+    let smallestSize = (elMemeImage.width < elMemeImage.height)? 'width' : 'height';
+    let imageRetio = elMemeImage[smallestSize] / elMemeImage[biggestSize];
+
+    canvas[biggestSize] = originalWidth;
+    canvas[smallestSize] = originalWidth*imageRetio;
+
     let ctx = canvas.getContext('2d')
 
     elMemeImage.onload = function() {

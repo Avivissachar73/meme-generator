@@ -377,7 +377,7 @@ input[type="color"]:hover, input[type="number"]:hover, select:hover {
         width: 50%;
     }
     .options-container {
-        width:50%;
+        width: 50%;
     }
 }
 /* @media (max-width: 700px) {
@@ -419,6 +419,7 @@ input[type="color"]:hover, input[type="number"]:hover, select:hover {
     .canvas-container {
         margin-right: 0;
         margin: 5% 0;
+        /* height: 70%; */
         height: 70%;
         width: 70%;
     }
@@ -445,7 +446,7 @@ input[type="color"]:hover, input[type="number"]:hover, select:hover {
     }
     .canvas-container {
         height: 60%;
-        width: 65%;
+        width: 80%;
         margin: 5%;
     }
     .options-container {
@@ -460,7 +461,7 @@ input[type="color"]:hover, input[type="number"]:hover, select:hover {
 }
 @media (max-width: 370px) {
     .canvas-container {
-        width: 75%;
-        /* width: 80%; */
+        /* width: 75%; */
+        width: 95%;
     }
 }
