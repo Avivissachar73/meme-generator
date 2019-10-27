@@ -11,7 +11,21 @@ let appData = {
     currTxtIdx: undefined,
     isCanvasClick: false,
     currEmogiesPage: 0,
-    emogiesPerPage: 5
+    emogiesPerPage: 5,
+    isNewMeme: true
+}
+
+function getIsNewMeme() {
+    return appData.isNewMeme;
+}
+
+function setNewMeme() {
+    appData.meme = createMeme();
+    appData.isNewMeme = true;
+}
+
+function unSetIsNewMeme() {
+    appData.isNewMeme = false;
 }
 
 function getPrevEmogiesCount() {
@@ -41,6 +55,9 @@ function getAllMemes() {
 }
 
 function updateCurrMeme(meme) {
+    // var newMeme = meme.slice();
+    // newMeme.texts = meme.texts.silce();
+    unSetIsNewMeme();
     appData.meme = meme;
 }
 
@@ -147,7 +164,7 @@ function loadMemesFromStorage() {
     return loadObjFromStorage(MEMES_STORAGE_KEY);
 }
 
-function saveMemeToStorage() {
+function saveMemesToStorage() {
     saveObjToStorage(MEMES_STORAGE_KEY, appData.memes);
 }
  

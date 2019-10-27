@@ -17,6 +17,7 @@
         <ul class="main-nav clean-list flex align-center space-between wrap">
             <!-- <li class="flex align-center justify-center"><button onclick="onOpenImagesModal()" class="open-gallery-modal">gallery</button></li> -->
             <li class="flex align-center justify-center"><button onclick="onOpenMemesModal()" class="show-memes-btn">Your memes</button></li>
+            <li class="flex align-center justify-center"><button onclick="init()" class="show-memes-btn">New</button></li>
             <li class="flex align-center justify-center"><button onclick="onSaveMeme()" class="save-meme-btn">Save</button></li>
             <li class="flex align-center justify-center"><button onclick="onDownloadMeme()" class="download-meme-btn">
                     <a class="download-link" href="" download="my_meme.jpg">Download</a>
@@ -80,8 +81,8 @@
         <h2 class="modal-title flex align-center justify-center">Choose Picture</h2>
         <section class="gallery-images-options align-center space-around wrap">
             <section>
-                <!-- <label for="image-upload">Upload Image</label> -->
-                <!-- <input id="image-upload" type="file" class="image-upload" onchange="onUploadImage(event)"/> -->
+                <label for="image-upload">Upload Image</label>
+                <input id="image-upload" type="file" class="image-upload" onchange="onUploadImage(event)"/>
                 <input id="image-upload" type="text" class="image-upload" onchange="onAddImageSrc()" placeholder="Add image URL"/>
             </section>
             <section>
@@ -89,6 +90,9 @@
             </section>
         </section>
         <div class="modal-items-container flex space-around align-center wrap"></div>
+        <div class="gallery-memes-canvas-container">
+            <!-- <canvas class="gallery-memes-canvas"></canvas> -->
+        </div>
     </div>
 
     <footer>

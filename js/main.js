@@ -5,10 +5,9 @@ let gElCanvas;
 let gCtx;
 let gElMemeImage = new Image();
 
-let gGalleryMemesImages = [];
-
 function init() {
     setCanvas();
+    setNewMeme();
     renderMeme(getMeme(), gElCanvas, gElMemeImage);
     onOpenImagesModal();
 }
@@ -68,22 +67,21 @@ function onCanvasUnClick(event) {
 }
 
 
-// function onUploadImage(event) {
-//     var elImgSrc = document.querySelector('.image-upload');
+function onUploadImage(event) {
+    var elImgSrc = document.querySelector('.image-upload');
     
-//     // let fileReader = new FileReader();
-//     // fileReader.onload = () => {
-//         //     if (fileReader.readyState === 2) {
-//     //         console.log(fileReader.result);
-//     //     }
-//     // }
-//     // fileReader.readAsDataURL(event.target.files[0]);
+    let fileReader = new FileReader();
+    fileReader.onload = () => {
+        if (fileReader.readyState === 2) {
+            getImagesSrcs().unshift(fileReader.result);
+            saveImagesToStorage();
+            renderImagesToModal(getImagesSrcs());
+            elImgSrc.value = null;
+        }
+    }
+    fileReader.readAsDataURL(event.target.files[0]);
     
-//     getImagesSrcs().unshift(elImgSrc.value);
-//     saveImagesToStorage();
-//     renderImagesToModal();
-//     elImgSrc.value = null;
-// }
+}
 
 function onAddImageSrc() {
     var elImgSrc = document.querySelector('.image-upload');
@@ -96,7 +94,6 @@ function onAddImageSrc() {
 function onUpdateCurrEmogiesPage(dif) {
     updateEmogiePage(dif);
     renderEmogies();
-    console.log(getCurrEmogiesPage());
 }
 
 function onAddEmogie(idx) {
@@ -107,6 +104,7 @@ function onAddEmogie(idx) {
 
 function onChangeMeme(idx) {
     updateCurrMeme(getAllMemes()[idx]);
+    // setExistMeme();
     renderMeme(getAllMemes()[idx], gElCanvas, gElMemeImage);
     resetInputs();
     onClose();
@@ -226,6 +224,7 @@ function onDownloadMeme() {
 }
 
 function onChangeCurrImg(elImg) {
+    setCanvas();
     getMeme().imgSrc = elImg.src;
     renderMeme(getMeme(), gElCanvas, gElMemeImage);
     onClose();
@@ -240,7 +239,7 @@ function onRemoveTxt() {
 }
 
 function onSaveMeme() {
-    updateMemes();
-    saveMemeToStorage();
+    if (getIsNewMeme()) updateMemes();
+    saveMemesToStorage();
     onClose();
 }
