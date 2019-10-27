@@ -102,7 +102,6 @@ function getSomeImagesSrcs() {
             `images/Meme_images/8.jpg`,
             `images/Meme_images/12.jpg`,
             `images/Meme_images/leo.jpg`,
-            `images/Meme_images/patric.jpg`,
             `images/Meme_images/X-Everywhere.jpg`];
 }
 

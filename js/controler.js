@@ -1,6 +1,6 @@
 'use strict';
 
-function renderMeme(meme, canvas, elMemeImage, container) {
+function setCanvasSize(meme, canvas, elMemeImage) {
     elMemeImage.src = meme.imgSrc;
 
     let originalWidth = canvas.width;
@@ -10,6 +10,10 @@ function renderMeme(meme, canvas, elMemeImage, container) {
 
     canvas[biggestSize] = originalWidth;
     canvas[smallestSize] = originalWidth*imageRetio;
+}
+
+function renderMeme(meme, canvas, elMemeImage) {
+    elMemeImage.src = meme.imgSrc;
 
     let ctx = canvas.getContext('2d')
 
@@ -47,13 +51,12 @@ function renderImagesToModal(imagesSrcsToShow) {
 function renderMemesGallery() {
     let elItemsContainer = document.querySelector('.modal-items-container')
     let elCanvasesContainer = document.querySelector('.gallery-memes-canvas-container');
+    elCanvasesContainer.innerHTML = null;
     getAllMemes().forEach((meme, idx) => {
-        // let elCanvas = document.querySelector('.gallery-memes-canvas');
-        // elCanvas.height = gElCanvas.height;
-        // elCanvas.width = gElCanvas.width;
         elCanvasesContainer.innerHTML += `<canvas width="${gElCanvas.width}" height="${gElCanvas.height}"></canvas>`;
         let elCanvas = elCanvasesContainer.children[elCanvasesContainer.children.length-1];
         let elImg = new Image();
+        setCanvasSize(meme, elCanvas, elImg);
         renderMeme(meme, elCanvas, elImg);
         setTimeout(() => {
             let canvasImgsURL = elCanvas.toDataURL();
@@ -80,9 +83,11 @@ function selectTxt(idx) {
     renderMeme(getMeme(), gElCanvas, gElMemeImage);
     
     gCtx.strokeStyle = 'black';
-    gCtx.rect(txt.pos.x-150, txt.pos.y+5, 300, -55);
+    let txtBorderWidth =  (txt.fontSize*txt.txt.length)/2;
+    let txtxBorderHeight = (txt.fontSize);
+    gCtx.rect(txt.pos.x-(txtBorderWidth/2), txt.pos.y+(txtxBorderHeight/8), txtBorderWidth, -txtxBorderHeight);
     gCtx.fillStyle = '#fffac480';
-    gCtx.fillRect(txt.pos.x-150, txt.pos.y+5, 300, -55);
+    gCtx.fillRect(txt.pos.x-(txtBorderWidth/2), txt.pos.y+(txtxBorderHeight/8), txtBorderWidth, -txtxBorderHeight);
     gCtx.stroke();
     
     document.querySelector('.change-txt').value = txt.txt;

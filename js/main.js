@@ -6,8 +6,9 @@ let gCtx;
 let gElMemeImage = new Image();
 
 function init() {
-    setCanvas();
     setNewMeme();
+    setCanvas();
+    // setCanvasSize(getMeme(), gElCanvas, gElMemeImage);
     renderMeme(getMeme(), gElCanvas, gElMemeImage);
     onOpenImagesModal();
 }
@@ -20,6 +21,7 @@ function setCanvas() {
 
     
     gElCanvas.width = gElCanvas.height = elContainer.offsetWidth;
+    setCanvasSize(getMeme(), gElCanvas, gElMemeImage);
 
     // let smallestSize = (elContainer.offsetWidth < elContainer.offsetHeight)? elContainer.offsetWidth : elContainer.offsetHeight;
     // gElCanvas.width = gElCanvas.height = smallestSize;
@@ -84,7 +86,7 @@ function onUploadImage(event) {
 }
 
 function onAddImageSrc() {
-    var elImgSrc = document.querySelector('.image-upload');
+    var elImgSrc = document.querySelector('.image-url-upload');
     getImagesSrcs().unshift(elImgSrc.value);
     saveImagesToStorage();
     renderImagesToModal(getImagesSrcs());
@@ -104,7 +106,6 @@ function onAddEmogie(idx) {
 
 function onChangeMeme(idx) {
     updateCurrMeme(getAllMemes()[idx]);
-    // setExistMeme();
     renderMeme(getAllMemes()[idx], gElCanvas, gElMemeImage);
     resetInputs();
     onClose();
@@ -143,10 +144,11 @@ function onChangeSelectedTxtIdx(event) {
 
     let clickedPos = (event.offsetX)? {x: event.offsetX, y: event.offsetY} : {x: event.touches[0].clientX-event.touches[0].target.offsetLeft,
                                                                               y: event.touches[0].clientY-event.touches[0].target.offsetTop}; 
-
     for (let i = 0; i < txts.length; i++) {
-        if (clickedPos.x < txts[i].pos.x+150 && clickedPos.x > txts[i].pos.x-150 &&
-            clickedPos.y < txts[i].pos.y+5 && clickedPos.y > txts[i].pos.y-50) {
+        let txtBorderWidth =  (txts[i].fontSize*txts[i].txt.length)/4;
+        let txtxBorderHeight = (txts[i].fontSize);
+        if (clickedPos.x < txts[i].pos.x+txtBorderWidth && clickedPos.x > txts[i].pos.x-txtBorderWidth &&
+            clickedPos.y < txts[i].pos.y+(txtxBorderHeight/8) && clickedPos.y > txts[i].pos.y-txtxBorderHeight) {
 
             selectTxt(i);
             return txts[i];
@@ -224,8 +226,9 @@ function onDownloadMeme() {
 }
 
 function onChangeCurrImg(elImg) {
-    setCanvas();
     getMeme().imgSrc = elImg.src;
+    setCanvas();
+    // setCanvasSize(getMeme(), gElCanvas, gElMemeImage);
     renderMeme(getMeme(), gElCanvas, gElMemeImage);
     onClose();
 }

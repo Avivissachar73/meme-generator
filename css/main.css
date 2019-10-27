@@ -114,7 +114,8 @@ header .main-nav > *, li button {
 }
 
 .main-nav.open {
-    transform: translate(0, 50%);
+    /* transform: translate(0, 50%); */
+    transform: translate(0, 63%);
 }
 
 .main-nav-hamburger {
@@ -329,7 +330,7 @@ input[type="color"]:hover, input[type="number"]:hover, select:hover {
 
 .gallery-memes-canvas-container {
     position: absolute;
-    top: 200000000px;
+    bottom: 200000000px;
     /* visibility: hidden; */
 }
 
@@ -394,8 +395,9 @@ input[type="color"]:hover, input[type="number"]:hover, select:hover {
         position: fixed;
         flex-direction: column;
         right: 0;
-        top: -6.75vh;
-        transform: translate(101%,50%);
+        /* top: -6.75vh; */
+        /* transform: translate(101%,50%); */
+        transform: translate(101%,63%);
     }
     header .main-nav > * {
         width: 40vw;
