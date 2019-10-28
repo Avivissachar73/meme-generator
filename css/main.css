@@ -115,7 +115,8 @@ header .main-nav > *, li button {
 
 .main-nav.open {
     /* transform: translate(0, 50%); */
-    transform: translate(0, 63%);
+    /* transform: translate(0, 63%); */
+    transform: translate(0, 0);
 }
 
 .main-nav-hamburger {
@@ -339,6 +340,8 @@ input[type="color"]:hover, input[type="number"]:hover, select:hover {
 
 .clean-list {
     list-style-type: none;
+    margin-block-start: none;
+    margin-block-end: none;
     margin: 0;
     padding: 0;
 }
@@ -391,13 +394,15 @@ input[type="color"]:hover, input[type="number"]:hover, select:hover {
 } */
 @media (max-width: 600px) {
     header .main-nav {
-        height: fit-content;
+        /* height: fit-content; */
         position: fixed;
         flex-direction: column;
         right: 0;
         /* top: -6.75vh; */
+        top: 7.5vh;
+        transform: translate(101%,0);
         /* transform: translate(101%,50%); */
-        transform: translate(101%,63%);
+        /* transform: translate(101%,63%); */
     }
     header .main-nav > * {
         width: 40vw;
