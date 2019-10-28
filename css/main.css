@@ -90,6 +90,7 @@ footer h6 {
 }
 
 .main-nav {
+    background-color: rgba(233, 161, 131, 0.5);
     height: 100%;
     transition: 0.3s;
     /* flex-direction: row; */
