@@ -87,7 +87,7 @@ function selectTxt(idx) {
     let txtxBorderHeight = (txt.fontSize);
     gCtx.rect(txt.pos.x-(txtBorderWidth/2), txt.pos.y+(txtxBorderHeight/8), txtBorderWidth, -txtxBorderHeight);
     gCtx.fillStyle = '#fffac480';
-    gCtx.fillRect(txt.pos.x-(txtBorderWidth/2), txt.pos.y+(txtxBorderHeight/8), txtBorderWidth, -txtxBorderHeight);
+    // gCtx.fillRect(txt.pos.x-(txtBorderWidth/2), txt.pos.y+(txtxBorderHeight/8), txtBorderWidth, -txtxBorderHeight);
     gCtx.stroke();
     
     document.querySelector('.change-txt').value = txt.txt;
@@ -108,11 +108,13 @@ function resetInputs() {
 function doMoveTxt(event) {
     event.preventDefault();
     if (!getIsCanvasClick()) return;
-    if (getCurrTxtIdx() === undefined) return
+    let currTxtxIdx = getCurrTxtIdx()
+    if (currTxtxIdx === undefined) return
     let pos = (event.offsetX)? {x: event.offsetX, y: event.offsetY} : {x: event.touches[0].clientX-event.touches[0].target.offsetLeft, 
                                                                        y: event.touches[0].clientY-event.touches[0].target.offsetTop};
-    getMeme().texts[getCurrTxtIdx()].pos = pos;
+    getMeme().texts[currTxtxIdx].pos = pos;
     renderMeme(getMeme(), gElCanvas, gElMemeImage);
+    selectTxt(currTxtxIdx);
 }
 
 function doChangeTxtObjAtrr(atrr, selector) {
