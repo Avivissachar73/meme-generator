@@ -115,6 +115,19 @@ function getImagesSrcsToShow(str) {
     })
 }
 
+function removeImg(idx) {
+    if (idx === -1) return false;
+    appData.imagesSrcs.splice(idx, 1);
+    saveImagesToStorage();
+    return true;
+}
+function removeMeme(idx) {
+    if (idx === -1) return false;
+    appData.memes.splice(idx, 1);
+    saveMemesToStorage();
+    return true;
+}
+
 function getMeme() {
     return appData.meme;
 }

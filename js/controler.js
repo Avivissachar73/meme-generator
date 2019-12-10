@@ -41,8 +41,8 @@ function renderMeme(meme, canvas, elMemeImage) {
 
 
 function renderImagesToModal(imagesSrcsToShow) {
-    var htmlStr = imagesSrcsToShow.map(imgSrc => {
-        return `<img onclick="onChangeCurrImg(this)" src="${imgSrc}" alt="">`
+    var htmlStr = imagesSrcsToShow.map((imgSrc, idx) => {
+        return `<div><img onclick="onChangeCurrImg(this)" src="${imgSrc}" alt=""><button onclick="onRemoveImg(${idx})">X</button></div>`
     }).join('');
     document.querySelector('.modal-items-container').innerHTML = htmlStr;
 }
@@ -60,7 +60,7 @@ function renderMemesGallery() {
         renderMeme(meme, elCanvas, elImg);
         setTimeout(() => {
             let canvasImgsURL = elCanvas.toDataURL();
-            elItemsContainer.innerHTML += `<img src="${canvasImgsURL}" onclick="onChangeMeme(${idx})"/>`;
+            elItemsContainer.innerHTML += `<div><img src="${canvasImgsURL}" onclick="onChangeMeme(${idx})"/><button onclick="onRemoveMeme(${idx})">X</button></div>`;
         }, 300);
     });
 }

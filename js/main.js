@@ -85,6 +85,21 @@ function onUploadImage(event) {
     
 }
 
+
+function onRemoveImg(idx) {
+    if (!confirm('Are you sure you want to remove this image?')) return;
+    if(removeImg(idx)) {
+        renderImagesToModal(getImagesSrcs());
+    };
+}
+function onRemoveMeme(idx) {
+    if (!confirm('Are you sure you want to remove this Meme?')) return;
+    if(removeMeme(idx)) {
+        // renderMemesGallery();
+        onOpenMemesModal();
+    };
+}
+
 function onAddImageSrc() {
     var elImgSrc = document.querySelector('.image-url-upload');
     getImagesSrcs().unshift(elImgSrc.value);
