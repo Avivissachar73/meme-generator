@@ -132,7 +132,7 @@ function doAddEmogie(emogie) {
     let pos = {x: gElCanvas.width/2, y: splitedCanvasHeight*4}
     let txts = getMeme().texts
     
-    txts.unshift(createTxtLine(pos, emogie));
+    txts.push(createTxtLine(pos, emogie));
     renderMeme(getMeme(), gElCanvas, gElMemeImage);
     selectTxt(txts.length-1);
 }
@@ -145,7 +145,7 @@ function onAddTxt() {
     if (txts.length === 1) pos = {x: gElCanvas.width/2, y: splitedCanvasHeight*6}
     if (txts.length >= 2) pos = {x: gElCanvas.width/2, y: splitedCanvasHeight*4}
     
-    txts.unshift(createTxtLine(pos));
+    txts.push(createTxtLine(pos));
 
     renderMeme(getMeme(), gElCanvas, gElMemeImage);
     selectTxt(txts.length-1);
@@ -159,7 +159,8 @@ function onChangeSelectedTxtIdx(event) {
 
     let clickedPos = (event.offsetX)? {x: event.offsetX, y: event.offsetY} : {x: event.touches[0].clientX-event.touches[0].target.offsetLeft,
                                                                               y: event.touches[0].clientY-event.touches[0].target.offsetTop}; 
-    for (let i = 0; i < txts.length; i++) {
+    // for (let i = 0; i < txts.length; i++) {
+    for (let i = txts.length-1; i >= 0; i--) {
         let txtBorderWidth =  (txts[i].fontSize*txts[i].txt.length)/4;
         let txtxBorderHeight = (txts[i].fontSize);
         if (clickedPos.x < txts[i].pos.x+txtBorderWidth && clickedPos.x > txts[i].pos.x-txtBorderWidth &&

@@ -26,8 +26,8 @@ function renderMeme(meme, canvas, elMemeImage) {
         ctx.beginPath();
 
         var txts = meme.texts;
-        // for (let i = 0; i < txts.length; i++) {
-        for (let i = txts.length; i > 0; i--) {
+
+        for (let i = 0; i < txts.length; i++) {
             ctx.fillStyle = txts[i].fontColor;
             ctx.strokeStyle = txts[i].fontOutlineColor;
             ctx.strokeWidth = '100px';
