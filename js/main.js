@@ -132,7 +132,7 @@ function doAddEmogie(emogie) {
     let pos = {x: gElCanvas.width/2, y: splitedCanvasHeight*4}
     let txts = getMeme().texts
     
-    txts.push(createTxtLine(pos, emogie));
+    txts.unshift(createTxtLine(pos, emogie));
     renderMeme(getMeme(), gElCanvas, gElMemeImage);
     selectTxt(txts.length-1);
 }
@@ -145,7 +145,7 @@ function onAddTxt() {
     if (txts.length === 1) pos = {x: gElCanvas.width/2, y: splitedCanvasHeight*6}
     if (txts.length >= 2) pos = {x: gElCanvas.width/2, y: splitedCanvasHeight*4}
     
-    txts.push(createTxtLine(pos));
+    txts.unshift(createTxtLine(pos));
 
     renderMeme(getMeme(), gElCanvas, gElMemeImage);
     selectTxt(txts.length-1);
