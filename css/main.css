@@ -73,7 +73,7 @@ button.clicked {
 }
 
 main {
-    min-height: 80vh;
+    /* min-height: 80vh; */
 }
 
 header, footer {
