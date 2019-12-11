@@ -73,7 +73,7 @@ button.clicked {
 }
 
 main {
-    /* min-height: 80vh; */
+    min-height: 80vh;
 }
 
 header, footer {
@@ -143,7 +143,7 @@ main {
     padding: 30px;
     width: 100%;
     /* height: 80%; */
-    min-height: 80vh;
+    height: 80vh;
     /* height: 75%;
     margin: 2.5% 0; */
     justify-content: space-around;
@@ -456,7 +456,7 @@ input[type="color"]:hover, input[type="number"]:hover, select:hover {
     .main-container {
         flex-direction: column;
         padding: 15px;
-        /* height: 90%; */
+        height: 90%;
     }
     .canvas-container {
         margin-right: 0;
